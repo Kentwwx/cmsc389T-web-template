@@ -7,13 +7,11 @@
 
 FROM node:10-alpine
 
-COPY package.json ./
+RUN mkdir -p /home/app
 
-USER node
-
+WORKDIR /home/app
+COPY . /home/app
 RUN npm install
-
 EXPOSE 8080
-
-CMD ["node","app.js"]
+CMD [ "node", "app.js" ]
 
